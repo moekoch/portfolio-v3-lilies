@@ -241,7 +241,7 @@ export default function Page() {
       <section id="about">
         <div className="inner">
           <div className="sec-label">ABOUT</div>
-          <h2 className="sec-title">Hi, I&apos;m Morgan</h2>
+          <h2 className="sec-title">Hi, I&apos;m Morgan!</h2>
           <div className="about-grid">
             <div>
               <div className="portrait-frame">
