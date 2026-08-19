@@ -283,13 +283,18 @@ export default function Page() {
               <div className="portrait-frame">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/portrait.jpg"
+                  src="/portrait2.jpg"
                   alt="Morgan Koch"
                   className="portrait-img"
                   onError={(e) => {
                     (e.currentTarget as HTMLImageElement).src =
                       "https://images.unsplash.com/photo-1561897519-6e4fbd1fbc41?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
                   }}
+                />
+                <img
+                  src="/SignatureHeart.png"
+                  alt="Morgan Koch signature"
+                  className="portrait-signature"
                 />
               </div>
             </div>

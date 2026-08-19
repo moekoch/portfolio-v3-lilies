@@ -171,6 +171,7 @@ section{padding:7rem var(--pad)}
 .portrait-frame{position:relative;padding:6px;background:linear-gradient(145deg,#eef1ef,#c7cdc9 40%,#f4f6f4 55%,#b9c2bd 80%,#e9ece9);border-radius:6px;box-shadow:0 1px 0 rgba(255,255,255,.9) inset,0 18px 40px -14px rgba(20,30,25,.35)}
 .portrait-frame::after{content:'';position:absolute;inset:6px;border-radius:3px;pointer-events:none;box-shadow:0 1px 0 rgba(255,255,255,.65) inset,0 -1px 0 rgba(0,0,0,.15) inset}
 .portrait-img{display:block;width:100%;border-radius:3px;}
+.portrait-signature{position:absolute;right:0.1rem;bottom:-3.8rem;width:min(46%,195px);max-width:195px;opacity:0.98;transform:rotate(-5.5deg);transform-origin:bottom right;z-index:2;pointer-events:none}
 .sb-lbl{font-family:var(--mono);font-size:.62rem;letter-spacing:.15em;color:var(--s);margin-bottom:.6rem;margin-top:1.8rem;display:block}
 .sb-list{list-style:none}
 .sb-list li{font-size:.83rem;padding:.28rem 0;border-bottom:1px solid var(--ch);opacity:.72}
