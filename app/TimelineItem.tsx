@@ -1,0 +1,28 @@
+"use client";
+import { useEffect, useRef, ReactNode } from "react";
+
+export default function TimelineItem({ current = false, children }: { current?: boolean; children: ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          obs.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.12 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  return (
+    <div ref={ref} className={`tl-item${current ? " cur" : ""}`}>
+      {children}
+    </div>
+  );
+}
