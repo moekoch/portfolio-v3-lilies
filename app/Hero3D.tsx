@@ -4,6 +4,15 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
+const LinkedInLogo = () => (
+  <svg className="social-link-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path
+      d="M6.94 8.5A1.56 1.56 0 1 1 6.94 5.4a1.56 1.56 0 0 1 0 3.1ZM5.28 9.88h3.32v9.59H5.28V9.88Zm5.29 0h3.18v1.31h.04c.44-.84 1.52-1.72 3.13-1.72 3.35 0 3.97 2.2 3.97 5.06v5.94h-3.31v-5.57c0-1.33-.03-3.05-1.85-3.05-1.86 0-2.15 1.45-2.15 2.94v5.68H10.57V9.88Z"
+      fill="currentColor"
+    />
+  </svg>
+);
+
 export default function Hero3D() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
@@ -278,6 +287,9 @@ export default function Hero3D() {
           </a>
           <a href="/resume.pdf" className="btn-g" target="_blank">
             RESUME
+          </a>
+          <a href="https://linkedin.com/in/moekoch" className="btn-linkedin" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+            <LinkedInLogo />
           </a>
         </div>
       </div>

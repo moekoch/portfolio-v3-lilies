@@ -8,6 +8,42 @@ import ProjectModal, { ModalKey } from "./ProjectModal";
 
 const Hero3D = dynamic(() => import("./Hero3D"), { ssr: false });
 
+const LinkedInLogo = () => (
+  <svg className="social-link-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path
+      d="M6.94 8.5A1.56 1.56 0 1 1 6.94 5.4a1.56 1.56 0 0 1 0 3.1ZM5.28 9.88h3.32v9.59H5.28V9.88Zm5.29 0h3.18v1.31h.04c.44-.84 1.52-1.72 3.13-1.72 3.35 0 3.97 2.2 3.97 5.06v5.94h-3.31v-5.57c0-1.33-.03-3.05-1.85-3.05-1.86 0-2.15 1.45-2.15 2.94v5.68H10.57V9.88Z"
+      fill="currentColor"
+    />
+  </svg>
+);
+
+const GitHubLogo = () => (
+  <svg className="social-link-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path
+      d="M12 2C6.48 2 2 6.56 2 12.15c0 4.46 2.87 8.24 6.84 9.57.5.09.68-.22.68-.49 0-.24-.01-.89-.01-1.74-2.78.62-3.37-1.38-3.37-1.38-.45-1.18-1.11-1.49-1.11-1.49-.9-.63.07-.62.07-.62 1 .07 1.54 1.05 1.54 1.05.89 1.55 2.33 1.1 2.9.84.09-.66.35-1.1.64-1.35-2.22-.26-4.55-1.14-4.55-5.08 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.32.1-2.73 0 0 .84-.27 2.75 1.05A9.38 9.38 0 0 1 12 6.77c.85 0 1.7.12 2.49.35 1.9-1.32 2.74-1.05 2.74-1.05.55 1.41.2 2.47.1 2.73.64.72 1.03 1.64 1.03 2.76 0 3.95-2.34 4.81-4.57 5.07.36.32.68.95.68 1.92 0 1.38-.01 2.5-.01 2.84 0 .27.18.59.69.49A10.18 10.18 0 0 0 22 12.15C22 6.56 17.52 2 12 2Z"
+      fill="currentColor"
+    />
+  </svg>
+);
+
+const EmailLogo = () => (
+  <svg className="social-link-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path
+      d="M3 6.75A2.75 2.75 0 0 1 5.75 4h12.5A2.75 2.75 0 0 1 21 6.75v10.5A2.75 2.75 0 0 1 18.25 20H5.75A2.75 2.75 0 0 1 3 17.25V6.75Zm2.1-.75 6.9 5.4 6.9-5.4H5.1Zm13.15 1.58-6.3 4.93a.75.75 0 0 1-.9 0L5.75 7.58v9.67c0 .41.34.75.75.75h10.99c.41 0 .75-.34.75-.75V7.58Z"
+      fill="currentColor"
+    />
+  </svg>
+);
+
+const ResumeLogo = () => (
+  <svg className="social-link-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path
+      d="M7 3.5A2.5 2.5 0 0 0 4.5 6v12A2.5 2.5 0 0 0 7 20.5h10A2.5 2.5 0 0 0 19.5 18V8.65a2.5 2.5 0 0 0-.74-1.77L15.12 3.74A2.5 2.5 0 0 0 13.35 3H7Zm7.5 1.8 3.2 3.2h-2.45a.75.75 0 0 1-.75-.75V5.3ZM7.75 8.5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 3.5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 3.5h6.5a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1 0-1.5Z"
+      fill="currentColor"
+    />
+  </svg>
+);
+
 export default function Page() {
   const [modalKey, setModalKey] = useState<ModalKey | null>(null);
 
@@ -316,16 +352,20 @@ export default function Page() {
           </p>
           <div className="contact-links">
             <a href="mailto:ekoch.morgan@gmail.com" className="clink">
-              ✉ EMAIL
+              <EmailLogo />
+              <span>EMAIL</span>
             </a>
-            <a href="https://linkedin.com/in/moekoch" className="clink" target="_blank">
-              ↗ LINKEDIN
+            <a href="https://linkedin.com/in/moekoch" className="clink" target="_blank" rel="noreferrer">
+              <LinkedInLogo />
+              <span>LINKEDIN</span>
             </a>
-            <a href="https://github.com/moekoch" className="clink" target="_blank">
-              ⌥ GITHUB
+            <a href="https://github.com/moekoch" className="clink" target="_blank" rel="noreferrer">
+              <GitHubLogo />
+              <span>GITHUB</span>
             </a>
             <a href="/resume.pdf" className="clink" target="_blank">
-              ↓ RESUME
+              <ResumeLogo />
+              <span>RESUME</span>
             </a>
           </div>
         </div>
