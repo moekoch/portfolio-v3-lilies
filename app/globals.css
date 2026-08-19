@@ -171,6 +171,38 @@ section{padding:7rem var(--pad)}
 .sb-list{list-style:none}
 .sb-list li{font-size:.83rem;padding:.28rem 0;border-bottom:1px solid var(--ch);opacity:.72}
 @media(max-width:768px){.about-grid{grid-template-columns:1fr;gap:3rem}}
+.inline-link {
+  color: #4a5250;              /* dark graphite — ~7.2:1 contrast on warm white, passes AAA */
+  text-decoration: underline;
+  text-decoration-color: #9aa09d;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  font-weight: 600;
+  border-bottom: none;
+  position: relative;
+  transition: color 0.25s ease, text-decoration-color 0.25s ease;
+}
+.inline-link::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -1.5px;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, #d4d7d5, #f0f2f1, #d4d7d5, transparent);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.inline-link:hover {
+  color: #2f3634;               /* darkens further on hover, ~9.5:1 contrast */
+  text-decoration-color: transparent;
+}
+.inline-link:hover::after {
+  opacity: 1;
+}
+.inline-link:focus-visible {
+  outline: 2px solid var(--sage, #8faf90);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
 
 /* CONTACT */
 #contact{background:var(--n);color:var(--w)}

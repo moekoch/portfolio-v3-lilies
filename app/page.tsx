@@ -241,7 +241,7 @@ export default function Page() {
       <section id="about">
         <div className="inner">
           <div className="sec-label">ABOUT</div>
-          <h2 className="sec-title">Hi, I&apos;m Morgan.</h2>
+          <h2 className="sec-title">Hi, I&apos;m Morgan</h2>
           <div className="about-grid">
             <div>
               <div className="portrait-frame">
@@ -252,7 +252,7 @@ export default function Page() {
                   className="portrait-img"
                   onError={(e) => {
                     (e.currentTarget as HTMLImageElement).src =
-                      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&h=750&fit=crop&crop=faces";
+                      "https://images.unsplash.com/photo-1561897519-6e4fbd1fbc41?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
                   }}
                 />
               </div>
@@ -261,19 +261,28 @@ export default function Page() {
               <div className="about-text">
                 <p>
                   I&apos;m a CS student at Penn State Behrend finishing up in May 2027, with a minor in MIS. Right now I&apos;m
-                  building at the VAR Lab — leading a team, shipping a clinical iOS app, and figuring out what it means to
+                  a manager at PSU's Virtual / Augmented Reality Lab — leading a team, shipping a clinical iOS app, and figuring out what it means to
                   own software that people actually depend on.
                 </p>
                 <p>
-                  I&apos;m drawn to the intersection of AI systems and the humans using them. Not just whether a model
-                  returns the right answer, but how retrieval is designed, how constraints are handled responsibly, and
-                  whether the next developer can understand what you built.
+                  When I&apos;m not doing school or work, I&apos;m usually trying to learn something new. Lately I&apos;ve 
+                  been playing around with{" "}
+                  <a
+                  href="https://odysseus-dev.github.io/odysseus/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-link"
+                  >
+                   Odysseus
+                  </a>{" "} 
+                  (PewDiePie's AI workspace) and self-hosting, learning about cybersecurity, and teaching myself Blender and TouchDesigner. 
+                  I&apos;ve been especially interested in 3D animation and making things that move and respond on a screen.
                 </p>
                 <p>
-                  Outside of code: I lead workshops as VP of ACM, compete on the Behrend eSports team, and use Blender and
-                  the Adobe suite for fun. Good design and good engineering solve the same problem from different angles.
+                  I lead workshops as VP of ACM, compete on the Behrend eSports Marvel Rivals team (my role is main strategist!), and set up VAR Lab outreach events
+                  for high school students and local girl scouts to learn about tech. I&apos;m also a big fan of shonen anime. :)
                 </p>
-                <p>Looking for 2027 entry-level roles in software engineering, AI/ML systems, or product-adjacent engineering tracks.</p>
+                <p>Looking for 2027 entry-level roles in software engineering, cybersecurity, or product-adjacent engineering tracks.</p>
               </div>
               <span className="sb-lbl">EDUCATION</span>
               <ul className="sb-list">
@@ -303,8 +312,7 @@ export default function Page() {
           <div className="sec-label">GET IN TOUCH</div>
           <h2 className="sec-title">Let&apos;s work together.</h2>
           <p style={{ opacity: 0.58, fontSize: ".93rem", maxWidth: 460, lineHeight: 1.72 }}>
-            Open to 2027 full-time roles in software engineering, AI/ML systems, and product engineering. Always happy to
-            talk shop.
+            Open to 2027 full-time roles in software engineering, cybersecurity, and product management. Feel free to reach out!
           </p>
           <div className="contact-links">
             <a href="mailto:ekoch.morgan@gmail.com" className="clink">
