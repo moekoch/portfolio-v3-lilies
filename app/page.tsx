@@ -209,7 +209,6 @@ export default function Page() {
               <ul>
                 <li>Git · GitHub</li>
                 <li>TestFlight distribution</li>
-                <li>Build automation</li>
                 <li>Figma</li>
                 <li>Blender</li>
                 <li>Adobe Creative Suite</li>
