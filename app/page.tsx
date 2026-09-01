@@ -224,6 +224,8 @@ export default function Page() {
         <div className="inner">
           <div className="sec-label">EXPERIMENTS</div>
           <h2 className="sec-title">Lab</h2>
+
+          {/*
           <div className="lab-banner">
             <img src="/models/lab-banner.jpg" alt="Lab banner" />
           </div>
@@ -269,6 +271,18 @@ export default function Page() {
                 be.
               </div>
             </Reveal>
+          </div>
+          */}
+
+          <div className="lab-under-construction" role="status" aria-live="polite">
+            <div className="lab-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.5 7L4.5 12L8.5 17" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M15.5 7L19.5 12L15.5 17" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M13.5 5L10.5 19" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+              </svg>
+            </div>
+            <h3>This area is under construction</h3>
           </div>
         </div>
       </section>
