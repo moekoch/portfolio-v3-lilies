@@ -279,7 +279,7 @@ export default function Hero3D() {
           KOCH
         </h1>
         <p className="hero-sub">
-          Computer Science + MIS at Penn State Behrend. <br />Looking for software engineering, cybersecurity, or IT product management positions for post-grad May 2025. I enjoy building web apps, exploring 3D graphics, and learning new frameworks!
+          Computer Science + MIS at Penn State Behrend. <br />Looking for software engineering, cybersecurity, or IT product management positions for post-grad May 2027. I enjoy building web apps, exploring 3D graphics, and learning new frameworks!
         </p>
         <div className="hero-ctas">
           <a href="#work" className="btn-p">
