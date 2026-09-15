@@ -315,8 +315,8 @@ export default function Page() {
               <div className="about-text">
                 <p>
                   I&apos;m a CS student at Penn State Behrend finishing up in May 2027, with a minor in MIS. Right now I&apos;m
-                  a manager at PSU's Virtual / Augmented Reality Lab — leading a team, shipping a clinical iOS app, and figuring out what it means to
-                  own software that people actually depend on.
+                  a manager at PSU's Virtual / Augmented Reality Lab: leading a team, shipping a clinical iOS app, and actively learning 
+                  about Unreal Engine + 3D Vista Tour Pro for a new Plastics Processing project.
                 </p>
                 <p>
                   When I&apos;m not doing school or work, I&apos;m usually trying to learn something new. Lately I&apos;ve 
@@ -330,11 +330,11 @@ export default function Page() {
                    Odysseus
                   </a>{" "} 
                   (PewDiePie's AI workspace) and self-hosting, learning about cybersecurity, and teaching myself Blender and TouchDesigner. 
-                  I&apos;ve been especially interested in 3D animation and making things that move and respond on a screen.
+                  I&apos;ve been especially interested in 3D animation and making things that move and respond.
                 </p>
                 <p>
-                  I lead workshops as VP of ACM, compete on the Behrend eSports Marvel Rivals team (my role is main strategist!), and set up VAR Lab outreach events
-                  for high school students and local girl scouts to learn about tech. I&apos;m also a big fan of shonen anime. :)
+                  I lead workshops as VP of ACM, compete on the Behrend eSports Marvel Rivals team (main strategist!), and set up VAR Lab outreach events
+                  for local K-12 students to learn about tech. I&apos;m also a big fan of shonen anime. :)
                 </p>
                 <p>Looking for 2027 entry-level roles in software engineering, cybersecurity, or product-adjacent engineering tracks.</p>
               </div>
@@ -390,8 +390,8 @@ export default function Page() {
       </section>
 
       <footer>
-        <span>MOEKOCH.XYZ — 2026</span>
-        <span>ERIE, PA → EVERYWHERE</span>
+        <span>MOEKOCH.XYZ</span>
+        <span>ERIE, PA</span>
       </footer>
     </>
   );
