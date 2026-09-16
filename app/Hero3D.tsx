@@ -23,6 +23,8 @@ export default function Hero3D() {
     if (!canvas || !hero) return;
 
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    canvas.style.touchAction = "pan-y";
+    canvas.style.pointerEvents = "none";
 
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
     renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
@@ -39,32 +41,17 @@ export default function Hero3D() {
     camera.lookAt(FX, 1.5, 0);
 
     const controls = new OrbitControls(camera, canvas);
-    controls.enableDamping = !isMobile;
+    controls.enableDamping = true;
     controls.dampingFactor = 0.055;
-    controls.autoRotate = !isMobile;
+    controls.autoRotate = true;
     controls.autoRotateSpeed = 0.5;
     controls.enableZoom = false;
-    controls.enableRotate = !isMobile;
+    controls.enableRotate = true;
     controls.enablePan = false;
     controls.minPolarAngle = Math.PI * 0.15;
     controls.maxPolarAngle = Math.PI * 0.72;
     controls.target.set(FX, 1.5, 0);
-    controls.enabled = !isMobile;
-
-    const setTouchMode = (clientY: number) => {
-      if (!isMobile) return;
-      const rect = hero.getBoundingClientRect();
-      const inBottomHalf = clientY - rect.top > rect.height * 0.5;
-      canvas.style.pointerEvents = inBottomHalf ? "none" : "auto";
-      canvas.style.touchAction = inBottomHalf ? "pan-y" : "none";
-      controls.enabled = !inBottomHalf;
-    };
-
-    const handleTouchStart = (event: TouchEvent) => setTouchMode(event.touches[0].clientY);
-    const handleTouchMove = (event: TouchEvent) => setTouchMode(event.touches[0].clientY);
-
-    canvas.addEventListener("touchstart", handleTouchStart, { passive: true });
-    canvas.addEventListener("touchmove", handleTouchMove, { passive: true });
+    controls.enabled = true;
 
     scene.add(new THREE.AmbientLight(0xfff8f2, 1.0));
     const key = new THREE.DirectionalLight(0xffffff, 1.5);
@@ -244,13 +231,9 @@ export default function Hero3D() {
     function resize() {
       if (!hero) return;
       const w = hero.offsetWidth;
-      const h = Math.max(hero.offsetHeight, isMobile ? 340 : 600);
+      const h = hero.offsetHeight || 600;
       camera.aspect = w / h;
-      if (isMobile) {
-        camera.setViewOffset(w, h, -w * 0.04, 0, w, h);
-      } else {
-        camera.setViewOffset(w, h, -w * 0.12, 0, w, h);
-      }
+      camera.setViewOffset(w, h, 0, 0, w, h);
       camera.updateProjectionMatrix();
       renderer.setSize(w, h, false);
     }
@@ -285,8 +268,6 @@ export default function Hero3D() {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
       window.removeEventListener("scroll", onScroll);
-      canvas.removeEventListener("touchstart", handleTouchStart);
-      canvas.removeEventListener("touchmove", handleTouchMove);
       io.disconnect();
       controls.dispose();
       renderer.dispose();
