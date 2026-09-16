@@ -63,8 +63,8 @@ export default function Page() {
               <div className="card-tag">HACKATHON · APR 2026 · 1ST PLACE</div>
               <h3 className="card-title">RedScare</h3>
               <p className="card-desc">
-                Women&apos;s health web app with cycle tracking, symptom logging, data visualizations, and AI-powered insights.
-                Built in 12 hours.
+                Women&apos;s health web app with cycle tracking, symptom logging, data visualizations, and AI-powered insights
+                for real people trying to make sense of their own patterns.
               </p>
               <div className="stack">
                 <span className="stag">JavaScript</span>
@@ -79,8 +79,8 @@ export default function Page() {
               <div className="card-tag">CLINICAL APP · 2025–PRESENT</div>
               <h3 className="card-title">Landing Place</h3>
               <p className="card-desc">
-                AI-enabled React Native iOS application for clinical research and outcome tracking, deployed to ~80 active
-                trial participants.
+                AI-enabled React Native iOS app for clinical research and patient outcome tracking, helping a research team
+                turn real participant data into usable insight.
               </p>
               <div className="stack">
                 <span className="stag">React Native</span>
@@ -92,15 +92,15 @@ export default function Page() {
             </Reveal>
             <Reveal className="proj-card" onClick={() => setModalKey("js")}>
               <div className="card-bar" style={{ background: "#EDD96B" }}></div>
-              <div className="card-tag">WEB · 2026–PRESENT</div>
+              <div className="card-tag">WEB · 2026 - PRESENT</div>
               <h3 className="card-title">Jerre's Service</h3>
               <p className="card-desc">
-                Custom business website for a family-owned snow plow and spreader dealer in Erie, PA.
+                A (work in progress) custom business website for a family-owned snow plow and spreader dealer in Erie, PA.
               </p>
               <div className="stack">
-                <span className="stag">WordPress</span>
                 <span className="stag">HTML/CSS</span>
                 <span className="stag">JavaScript</span>
+                <span className="stag">Cloudflare Pages</span>
               </div>
             </Reveal>
           </div>
@@ -116,7 +116,7 @@ export default function Page() {
           <h2 className="sec-title">Experience</h2>
           <div className="timeline">
             <TimelineItem current>
-              <div className="tl-date">MAR 2025 – PRESENT</div>
+              <div className="tl-date">MAR 2025 - PRESENT</div>
               <div className="tl-role">App Development Manager / Software Engineer</div>
               <div className="tl-org">VAR Lab, Penn State Behrend (Excelerate) — Erie, PA</div>
               <ul className="tl-ul">
@@ -127,7 +127,7 @@ export default function Page() {
               </ul>
             </TimelineItem>
             <TimelineItem>
-              <div className="tl-date">MAY 2026 – JUL 2026</div>
+              <div className="tl-date">MAY 2026 - JUL 2026</div>
               <div className="tl-role">IT Product Management Intern</div>
               <div className="tl-org">Members 1st Federal Credit Union — Enola, PA</div>
               <ul className="tl-ul">
@@ -137,7 +137,7 @@ export default function Page() {
               </ul>
             </TimelineItem>
             <TimelineItem>
-              <div className="tl-date">MAY 2025 – AUG 2025</div>
+              <div className="tl-date">MAY 2025 - AUG 2025</div>
               <div className="tl-role">IT Project Management Intern</div>
               <div className="tl-org">TE Connectivity — Harrisburg, PA</div>
               <ul className="tl-ul">
@@ -146,7 +146,7 @@ export default function Page() {
               </ul>
             </TimelineItem>
             <TimelineItem>
-              <div className="tl-date">APR 2024 – DEC 2025</div>
+              <div className="tl-date">APR 2024 - DEC 2025</div>
               <div className="tl-role">Student Technician</div>
               <div className="tl-org">Penn State Behrend — Erie, PA</div>
               <ul className="tl-ul">
@@ -154,7 +154,7 @@ export default function Page() {
               </ul>
             </TimelineItem>
             <TimelineItem>
-              <div className="tl-date">JUN 2023 – AUG 2024</div>
+              <div className="tl-date">JUN 2023 - AUG 2024</div>
               <div className="tl-role">Information Technology Intern</div>
               <div className="tl-org">Big Spring School District — Newville, PA</div>
               <ul className="tl-ul">
@@ -334,7 +334,7 @@ export default function Page() {
                 </p>
                 <p>
                   I lead workshops as VP of ACM, compete on the Behrend eSports Marvel Rivals team (main strategist!), and set up VAR Lab outreach events
-                  for local K-12 students to learn about tech. I&apos;m also a big fan of shonen anime. :)
+                  for local K-12 students to learn about tech.
                 </p>
                 <p>Looking for 2027 entry-level roles in software engineering, cybersecurity, or product-adjacent engineering tracks.</p>
               </div>
