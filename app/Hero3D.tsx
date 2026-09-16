@@ -298,7 +298,7 @@ export default function Hero3D() {
       <canvas id="hero-canvas" ref={canvasRef}></canvas>
       <div className="hero-content">
         <div className="hero-eyebrow">
-          MOEKOCH.XYZ — Computer Science Portfolio Site<span>_</span>
+          MOEKOCH.XYZ — Computer Science Portfolio Site{/*<span>_</span> */}
         </div>
         <h1 className="hero-name">
           MORGAN
