@@ -29,16 +29,14 @@ export default function Hero3D() {
       canvas.style.touchAction = desktop ? "none" : "pan-y";
       canvas.style.pointerEvents = desktop ? "auto" : "none";
       controls.enabled = desktop;
-      controls.enableZoom = desktop;
+      controls.enableZoom = false;
       controls.enableRotate = desktop;
-      controls.enablePan = desktop;
+      controls.enablePan = false;
       controls.enableDamping = desktop;
       controls.autoRotate = true;
       if (!desktop) {
         controls.autoRotate = true;
-        controls.enableZoom = false;
         controls.enableRotate = false;
-        controls.enablePan = false;
         controls.enableDamping = false;
       }
     };
