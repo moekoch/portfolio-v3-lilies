@@ -22,9 +22,26 @@ export default function Hero3D() {
     const hero = heroRef.current;
     if (!canvas || !hero) return;
 
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    canvas.style.touchAction = "pan-y";
-    canvas.style.pointerEvents = "none";
+    const mobileMediaQuery = window.matchMedia("(max-width: 768px)");
+    const isMobile = () => mobileMediaQuery.matches;
+    const syncInteractionState = () => {
+      const desktop = !isMobile();
+      canvas.style.touchAction = desktop ? "none" : "pan-y";
+      canvas.style.pointerEvents = desktop ? "auto" : "none";
+      controls.enabled = desktop;
+      controls.enableZoom = desktop;
+      controls.enableRotate = desktop;
+      controls.enablePan = desktop;
+      controls.enableDamping = desktop;
+      controls.autoRotate = true;
+      if (!desktop) {
+        controls.autoRotate = true;
+        controls.enableZoom = false;
+        controls.enableRotate = false;
+        controls.enablePan = false;
+        controls.enableDamping = false;
+      }
+    };
 
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
     renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
@@ -37,7 +54,7 @@ export default function Hero3D() {
 
     const FX = 2.4;
     const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
-    camera.position.set(FX * 0.55, 2.5, 13);
+    camera.position.set(FX * 0.55, 2.5, 9.5);
     camera.lookAt(FX, 1.5, 0);
 
     const controls = new OrbitControls(camera, canvas);
@@ -45,13 +62,13 @@ export default function Hero3D() {
     controls.dampingFactor = 0.055;
     controls.autoRotate = true;
     controls.autoRotateSpeed = 0.5;
-    controls.enableZoom = false;
+    controls.enableZoom = true;
     controls.enableRotate = true;
-    controls.enablePan = false;
+    controls.enablePan = true;
     controls.minPolarAngle = Math.PI * 0.15;
     controls.maxPolarAngle = Math.PI * 0.72;
     controls.target.set(FX, 1.5, 0);
-    controls.enabled = true;
+    syncInteractionState();
 
     scene.add(new THREE.AmbientLight(0xfff8f2, 1.0));
     const key = new THREE.DirectionalLight(0xffffff, 1.5);
@@ -239,6 +256,12 @@ export default function Hero3D() {
     }
     resize();
     window.addEventListener("resize", resize);
+    const handleViewportChange = () => syncInteractionState();
+    if (typeof mobileMediaQuery.addEventListener === "function") {
+      mobileMediaQuery.addEventListener("change", handleViewportChange);
+    } else {
+      mobileMediaQuery.addListener(handleViewportChange);
+    }
 
     let scrollY = 0;
     const onScroll = () => (scrollY = window.scrollY);
@@ -268,6 +291,11 @@ export default function Hero3D() {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
       window.removeEventListener("scroll", onScroll);
+      if (typeof mobileMediaQuery.removeEventListener === "function") {
+        mobileMediaQuery.removeEventListener("change", handleViewportChange);
+      } else {
+        mobileMediaQuery.removeListener(handleViewportChange);
+      }
       io.disconnect();
       controls.dispose();
       renderer.dispose();
