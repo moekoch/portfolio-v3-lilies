@@ -296,7 +296,7 @@ export default function Page() {
               <div className="portrait-frame">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/portrait2.jpg"
+                  src="/portrait3.jpg"
                   alt="Morgan Koch"
                   className="portrait-img"
                   onError={(e) => {

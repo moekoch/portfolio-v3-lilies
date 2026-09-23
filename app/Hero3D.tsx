@@ -83,119 +83,7 @@ export default function Hero3D() {
     back.position.set(0, 5, -8);
     scene.add(back);
 
-    const petalM = new THREE.MeshStandardMaterial({ color: 0xf8f4ee, roughness: 0.5, metalness: 0, side: THREE.DoubleSide });
-    const petalM2 = new THREE.MeshStandardMaterial({ color: 0xe8f0e8, roughness: 0.5, metalness: 0, side: THREE.DoubleSide });
-    const stamenM = new THREE.MeshStandardMaterial({ color: 0xe0c840, roughness: 0.4 });
-    const stemM = new THREE.MeshStandardMaterial({ color: 0x527a52, roughness: 0.85 });
-    const leafM = new THREE.MeshStandardMaterial({ color: 0x628a62, roughness: 0.75, side: THREE.DoubleSide });
-
-    function petalShape() {
-      const s = new THREE.Shape();
-      s.moveTo(0, 0);
-      s.bezierCurveTo(0.6, 0.5, 0.7, 1.6, 0, 3.0);
-      s.bezierCurveTo(-0.7, 1.6, -0.6, 0.5, 0, 0);
-      return s;
-    }
-    function leafShape() {
-      const s = new THREE.Shape();
-      s.moveTo(0, 0);
-      s.bezierCurveTo(0.55, 0.4, 0.6, 1.4, 0, 2.6);
-      s.bezierCurveTo(-0.6, 1.4, -0.55, 0.4, 0, 0);
-      return s;
-    }
-
-    function makeLily(mat: THREE.Material, open = 0.28, scale = 1) {
-      const g = new THREE.Group();
-      for (let i = 0; i < 6; i++) {
-        const piv = new THREE.Object3D();
-        piv.rotation.y = (i / 6) * Math.PI * 2;
-        const mesh = new THREE.Mesh(new THREE.ShapeGeometry(petalShape(), 18), mat);
-        mesh.rotation.x = -Math.PI * open;
-        piv.add(mesh);
-        g.add(piv);
-      }
-      for (let i = 0; i < 6; i++) {
-        const piv = new THREE.Object3D();
-        piv.rotation.y = (i / 6) * Math.PI * 2 + Math.PI / 6;
-        const fil = new THREE.Mesh(new THREE.CylinderGeometry(0.013, 0.013, 1.8, 6), stamenM);
-        fil.position.set(0.2, 0.9, 0);
-        fil.rotation.z = 0.14;
-        const tip = new THREE.Mesh(new THREE.SphereGeometry(0.06, 7, 7), stamenM);
-        tip.position.set(0.24, 1.82, 0);
-        piv.add(fil);
-        piv.add(tip);
-        g.add(piv);
-      }
-      const pist = new THREE.Mesh(new THREE.CylinderGeometry(0.032, 0.032, 2.0, 8), stemM);
-      pist.position.y = 1.0;
-      g.add(pist);
-      const cap = new THREE.Mesh(new THREE.SphereGeometry(0.075, 8, 8), new THREE.MeshStandardMaterial({ color: 0x3a5a3a }));
-      cap.position.y = 2.05;
-      g.add(cap);
-      g.scale.setScalar(scale);
-      return g;
-    }
-
-    function makeStem(h: number) {
-      const m = new THREE.Mesh(new THREE.CylinderGeometry(0.048, 0.07, h, 8), stemM);
-      m.castShadow = true;
-      return m;
-    }
-    function makeLeaf(sx = 1, sy = 1) {
-      const m = new THREE.Mesh(new THREE.ShapeGeometry(leafShape(), 12), leafM);
-      m.scale.set(sx, sy, 1);
-      return m;
-    }
-
-    const flowerGroup = new THREE.Group();
-    flowerGroup.position.x = FX;
-    scene.add(flowerGroup);
-
-    const s1 = makeStem(5.5);
-    s1.position.set(0, -0.2, 0);
-    flowerGroup.add(s1);
-    const l1 = makeLily(petalM, 0.3, 1.15);
-    l1.position.set(0, 2.6, 0);
-    flowerGroup.add(l1);
-    const lf1 = makeLeaf(1.2, 1.1);
-    lf1.position.set(0, 0.9, 0);
-    lf1.rotation.set(-0.25, 0.5, 0.45);
-    flowerGroup.add(lf1);
-
-    const s2 = makeStem(4.2);
-    s2.position.set(-3.0, -1.0, -1.2);
-    flowerGroup.add(s2);
-    const l2 = makeLily(petalM2, 0.14, 0.82);
-    l2.position.set(-3.0, 0.9, -1.2);
-    l2.rotation.y = 0.8;
-    flowerGroup.add(l2);
-    const lf2 = makeLeaf(1.0, 1.0);
-    lf2.position.set(-3.0, -0.1, -1.2);
-    lf2.rotation.set(-0.2, -0.4, -0.5);
-    flowerGroup.add(lf2);
-
-    const s3 = makeStem(4.8);
-    s3.position.set(2.8, -0.6, -1.0);
-    flowerGroup.add(s3);
-    const l3 = makeLily(petalM, 0.33, 0.95);
-    l3.position.set(2.8, 1.8, -1.0);
-    l3.rotation.y = 2.0;
-    flowerGroup.add(l3);
-    const lf3 = makeLeaf(1.1, 0.9);
-    lf3.position.set(2.8, 0.3, -1.0);
-    lf3.rotation.set(-0.3, 0.3, -0.4);
-    flowerGroup.add(lf3);
-
-    const s4 = makeStem(3.5);
-    s4.position.set(-1.5, -1.5, -2.5);
-    flowerGroup.add(s4);
-    const l4 = makeLily(petalM2, 0.07, 0.65);
-    l4.position.set(-1.5, 0.2, -2.5);
-    l4.rotation.y = 1.5;
-    flowerGroup.add(l4);
-
-    // Optional: swap in the Sketchfab "Lilies" model if present at /public/models/lilies.glb
-    // Falls back silently to the procedural flowers above if the file is missing.
+    // Load the Sketchfab "Lilies" model from /public/models/lilies.glb.
     new GLTFLoader().load(
       "/models/lilies.glb",
       (gltf) => {
@@ -216,9 +104,8 @@ export default function Hero3D() {
             o.receiveShadow = true;
           }
         });
-        flowerGroup.visible = false; // hide procedural stand-in once real model loads
-        flowerGroup.parent?.add(model);
-        model.position.x = flowerGroup.position.x;
+        scene.add(model);
+        model.position.x = FX;
 
         // NEW: recenter orbit target on the actual model, not the old flower position
         const fittedBox = new THREE.Box3().setFromObject(model);
@@ -234,7 +121,7 @@ export default function Hero3D() {
         controls.update();
       },
       undefined,
-      () => {} // no lilies.glb present — keep procedural flowers
+      () => {}
     );
 
     const gnd = new THREE.Mesh(new THREE.PlaneGeometry(40, 40), new THREE.MeshStandardMaterial({ color: 0xf2ede6, roughness: 1 }));
@@ -273,11 +160,6 @@ export default function Hero3D() {
     function tick() {
       raf = requestAnimationFrame(tick);
       if (!visible) return;
-      const t = performance.now() * 0.001;
-      l1.rotation.z = Math.sin(t * 0.38) * 0.022;
-      l2.rotation.z = Math.sin(t * 0.32 + 1.2) * 0.018;
-      l3.rotation.z = Math.sin(t * 0.42 + 2.5) * 0.02;
-      l4.rotation.z = Math.sin(t * 0.28 + 0.8) * 0.015;
       const sf = Math.min(scrollY / window.innerHeight, 1);
       camera.position.y = 2.5 + sf * 2.5;
       controls.update();
