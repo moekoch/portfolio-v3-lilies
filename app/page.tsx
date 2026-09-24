@@ -218,6 +218,81 @@ export default function Page() {
         </div>
       </section>
 
+      {/* ABOUT */}
+      <section id="about">
+        <div className="inner">
+          <div className="sec-label">ABOUT</div>
+          <h2 className="sec-title">Hi, I&apos;m Morgan!</h2>
+          <div className="about-grid">
+            <div>
+              <div className="portrait-frame">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/portrait3.jpg"
+                  alt="Morgan Koch"
+                  className="portrait-img"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).src =
+                      "https://images.unsplash.com/photo-1561897519-6e4fbd1fbc41?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+                  }}
+                />
+                <img
+                  src="/SignatureHeart.png"
+                  alt="Morgan Koch signature"
+                  className="portrait-signature"
+                />
+              </div>
+            </div>
+            <div>
+              <div className="about-text">
+                <p>
+                  I&apos;m a CS student at Penn State Behrend finishing up in May 2027, with a minor in MIS. Right now I&apos;m
+                  a manager at PSU's Virtual / Augmented Reality Lab: leading a team, shipping a clinical iOS app, and actively learning 
+                  about Unreal Engine + 3D Vista Tour Pro for a new Plastics Processing project.
+                </p>
+                <p>
+                  When I&apos;m not doing school or work, I&apos;m usually trying to learn something new. Lately I&apos;ve 
+                  been playing around with{" "}
+                  <a
+                  href="https://odysseus-dev.github.io/odysseus/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-link"
+                  >
+                   Odysseus
+                  </a>{" "} 
+                  (PewDiePie's AI workspace) and self-hosting and teaching myself Blender and TouchDesigner. 
+                  I&apos;ve been especially interested in 3D animation and making things that move and respond.
+                </p>
+                <p>
+                  I lead workshops as VP of ACM, compete on the Behrend eSports Marvel Rivals team (main strategist!), and set up VAR Lab outreach events
+                  for local K-12 students to learn about tech.
+                </p>
+                <p>Looking for 2027 entry-level roles in software engineering or product-adjacent engineering tracks.</p>
+              </div>
+              <span className="sb-lbl">EDUCATION</span>
+              <ul className="sb-list">
+                <li>Penn State Behrend — BS CS + MIS Minor; Graduating May 2027</li>
+                <li>GPA: 3.37 · Dean&apos;s List</li>
+                <li>NVIDIA Deep Learning Cert · 2024</li>
+              </ul>
+              <span className="sb-lbl">HONORS</span>
+              <ul className="sb-list">
+                <li>James Meehl Engineering Scholarship</li>
+                <li>AAUW Carlisle Higher Education Scholarship</li>
+                <li>Shelly &amp; Shirley Czulewicz Trustee Scholarship</li>
+              </ul>
+              <span className="sb-lbl">LEADERSHIP</span>
+              <ul className="sb-list">
+                <li>App Dev Manager — Penn State Virtual / Augmented Reality (VAR) Lab</li>
+                <li>Vice President — Association for Computing Machinery (ACM)</li>
+                <li>Media Board + Competitor — Behrend eSports (ECAC)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* LAB */}
       <section id="lab">
         <div className="inner">
@@ -282,80 +357,6 @@ export default function Page() {
               </svg>
             </div>
             <h3>This area is under construction</h3>
-          </div>
-        </div>
-      </section>
-
-      {/* ABOUT */}
-      <section id="about">
-        <div className="inner">
-          <div className="sec-label">ABOUT</div>
-          <h2 className="sec-title">Hi, I&apos;m Morgan!</h2>
-          <div className="about-grid">
-            <div>
-              <div className="portrait-frame">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/portrait3.jpg"
-                  alt="Morgan Koch"
-                  className="portrait-img"
-                  onError={(e) => {
-                    (e.currentTarget as HTMLImageElement).src =
-                      "https://images.unsplash.com/photo-1561897519-6e4fbd1fbc41?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
-                  }}
-                />
-                <img
-                  src="/SignatureHeart.png"
-                  alt="Morgan Koch signature"
-                  className="portrait-signature"
-                />
-              </div>
-            </div>
-            <div>
-              <div className="about-text">
-                <p>
-                  I&apos;m a CS student at Penn State Behrend finishing up in May 2027, with a minor in MIS. Right now I&apos;m
-                  a manager at PSU's Virtual / Augmented Reality Lab: leading a team, shipping a clinical iOS app, and actively learning 
-                  about Unreal Engine + 3D Vista Tour Pro for a new Plastics Processing project.
-                </p>
-                <p>
-                  When I&apos;m not doing school or work, I&apos;m usually trying to learn something new. Lately I&apos;ve 
-                  been playing around with{" "}
-                  <a
-                  href="https://odysseus-dev.github.io/odysseus/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-link"
-                  >
-                   Odysseus
-                  </a>{" "} 
-                  (PewDiePie's AI workspace) and self-hosting and teaching myself Blender and TouchDesigner. 
-                  I&apos;ve been especially interested in 3D animation and making things that move and respond.
-                </p>
-                <p>
-                  I lead workshops as VP of ACM, compete on the Behrend eSports Marvel Rivals team (main strategist!), and set up VAR Lab outreach events
-                  for local K-12 students to learn about tech.
-                </p>
-                <p>Looking for 2027 entry-level roles in software engineering or product-adjacent engineering tracks.</p>
-              </div>
-              <span className="sb-lbl">EDUCATION</span>
-              <ul className="sb-list">
-                <li>Penn State Behrend — BS CS + MIS Minor, May 2027</li>
-                <li>GPA: 3.37 · Dean&apos;s List</li>
-                <li>NVIDIA Deep Learning Cert · 2024</li>
-              </ul>
-              <span className="sb-lbl">HONORS</span>
-              <ul className="sb-list">
-                <li>AAUW Carlisle Higher Education Scholarship</li>
-                <li>Shelly &amp; Shirley Czulewicz Trustee Scholarship</li>
-                <li>Rotary Youth Leadership Awards (RYLA)</li>
-              </ul>
-              <span className="sb-lbl">LEADERSHIP</span>
-              <ul className="sb-list">
-                <li>VP — Association for Computing Machinery (ACM)</li>
-                <li>Media Board + Competitor — Behrend eSports (ECAC)</li>
-              </ul>
-            </div>
           </div>
         </div>
       </section>
