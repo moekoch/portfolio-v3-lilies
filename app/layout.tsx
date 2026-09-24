@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Morgan Koch — moekoch.xyz",
-  description: "Morgan Koch — CS + AI + Design. Penn State Behrend.",
+  description: "Morgan Koch — Senior CS Student Portfolio",
   openGraph: {
     title: "Morgan Koch — moekoch.xyz",
     url: "https://moekoch.xyz",
