@@ -16,6 +16,7 @@ const LinkedInLogo = () => (
 export default function Hero3D() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
+  const modelStatusRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -83,47 +84,6 @@ export default function Hero3D() {
     back.position.set(0, 5, -8);
     scene.add(back);
 
-    // Load the Sketchfab model from /public/models/[...].glb.
-    new GLTFLoader().load(
-      "/models/lego_flower_bouquet.glb",
-      (gltf) => {
-        const model = gltf.scene;
-        const box = new THREE.Box3().setFromObject(model);
-        const size = new THREE.Vector3();
-        box.getSize(size);
-        const maxDim = Math.max(size.x, size.y, size.z) || 1;
-        const scale = 4.2 / maxDim;
-        model.scale.setScalar(scale);
-        const center = new THREE.Vector3();
-        box.getCenter(center);
-        model.position.sub(center.multiplyScalar(scale));
-        model.position.y += 1.4;
-        model.traverse((o: any) => {
-          if (o.isMesh) {
-            o.castShadow = true;
-            o.receiveShadow = true;
-          }
-        });
-        scene.add(model);
-        model.position.x = FX;
-
-        // NEW: recenter orbit target on the actual model, not the old flower position
-        const fittedBox = new THREE.Box3().setFromObject(model);
-        const fittedCenter = new THREE.Vector3();
-        fittedBox.getCenter(fittedCenter);
-        const fittedSize = new THREE.Vector3();
-        fittedBox.getSize(fittedSize);
-        const fittedMax = Math.max(fittedSize.x, fittedSize.y, fittedSize.z) || 1;
-
-        controls.target.copy(fittedCenter);
-        camera.position.set(fittedCenter.x, fittedCenter.y + fittedMax * 0.3, fittedCenter.z + fittedMax * 1.15);
-        camera.lookAt(fittedCenter);
-        controls.update();
-      },
-      undefined,
-      () => {}
-    );
-
     const gnd = new THREE.Mesh(new THREE.PlaneGeometry(40, 40), new THREE.MeshStandardMaterial({ color: 0xf2ede6, roughness: 1 }));
     gnd.rotation.x = -Math.PI / 2;
     gnd.position.y = -3.2;
@@ -135,7 +95,7 @@ export default function Hero3D() {
       const w = hero.offsetWidth;
       const h = hero.offsetHeight || 600;
       camera.aspect = w / h;
-      const horizontalOffset = -Math.min(w * 0.1, 140);
+      const horizontalOffset = -Math.min(w * 0.14, 190);
       camera.setViewOffset(w, h, horizontalOffset, 0, w, h);
       camera.updateProjectionMatrix();
       renderer.setSize(w, h, false);
@@ -154,7 +114,89 @@ export default function Hero3D() {
     window.addEventListener("scroll", onScroll);
 
     let visible = true;
-    const io = new IntersectionObserver(([e]) => (visible = e.isIntersecting));
+    let model: THREE.Object3D | null = null;
+    let modelLoadStarted = false;
+    let loadCancelled = false;
+    let idleHandle: number | null = null;
+
+    const setModelStatus = (message: string, ready = false) => {
+      const status = modelStatusRef.current;
+      if (!status) return;
+      status.textContent = message;
+      status.dataset.ready = ready ? "true" : "false";
+    };
+
+    const loadModel = () => {
+      if (modelLoadStarted || loadCancelled) return;
+      modelLoadStarted = true;
+      setModelStatus("LOADING MODEL 0%...");
+
+      new GLTFLoader().load(
+        "/models/garden_whim_flowers.glb",
+        (gltf) => {
+          if (loadCancelled) return;
+          model = gltf.scene;
+          const box = new THREE.Box3().setFromObject(model);
+          const size = new THREE.Vector3();
+          box.getSize(size);
+          const maxDim = Math.max(size.x, size.y, size.z) || 1;
+          const scale = 4.2 / maxDim;
+          model.scale.setScalar(scale);
+          const center = new THREE.Vector3();
+          box.getCenter(center);
+          model.position.sub(center.multiplyScalar(scale));
+          model.position.y += 1.5; //was originally 0.4 for lilies
+          model.traverse((o: any) => {
+            if (o.isMesh) {
+              o.castShadow = true;
+              o.receiveShadow = true;
+            }
+          });
+          scene.add(model);
+          model.position.x = FX;
+
+          // Recenter orbit target on the actual model, not the old flower position.
+          const fittedBox = new THREE.Box3().setFromObject(model);
+          const fittedCenter = new THREE.Vector3();
+          fittedBox.getCenter(fittedCenter);
+          const fittedSize = new THREE.Vector3();
+          fittedBox.getSize(fittedSize);
+          const fittedMax = Math.max(fittedSize.x, fittedSize.y, fittedSize.z) || 1;
+
+          const framingOffsetY = 0.8;
+          controls.target.copy(fittedCenter);
+          controls.target.y += framingOffsetY;
+          camera.position.set(fittedCenter.x, fittedCenter.y + fittedMax * 0.3 + framingOffsetY, fittedCenter.z + fittedMax * 1.15);
+          camera.lookAt(controls.target);
+          controls.update();
+          setModelStatus("", true);
+        },
+        (progress) => {
+          if (progress.total > 0) {
+            setModelStatus(`LOADING MODEL ${Math.round((progress.loaded / progress.total) * 100)}%...`);
+          }
+        },
+        () => setModelStatus("MODEL COULD NOT LOAD")
+      );
+    };
+
+    const scheduleModelLoad = () => {
+      if (modelLoadStarted || loadCancelled || !visible) return;
+      const start = () => {
+        idleHandle = null;
+        loadModel();
+      };
+      if (typeof window.requestIdleCallback === "function") {
+        idleHandle = window.requestIdleCallback(start, { timeout: 1800 });
+      } else {
+        idleHandle = window.setTimeout(start, 250);
+      }
+    };
+
+    const io = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      if (visible) scheduleModelLoad();
+    }, { rootMargin: "200px" });
     io.observe(hero);
 
     let raf = 0;
@@ -178,6 +220,24 @@ export default function Hero3D() {
         mobileMediaQuery.removeListener(handleViewportChange);
       }
       io.disconnect();
+      loadCancelled = true;
+      if (idleHandle !== null) {
+        if (typeof window.cancelIdleCallback === "function") {
+          window.cancelIdleCallback(idleHandle);
+        } else {
+          window.clearTimeout(idleHandle);
+        }
+      }
+      model?.traverse((o: any) => {
+        if (o.isMesh) {
+          o.geometry.dispose();
+          if (Array.isArray(o.material)) {
+            o.material.forEach((material: THREE.Material) => material.dispose());
+          } else {
+            o.material.dispose();
+          }
+        }
+      });
       controls.dispose();
       renderer.dispose();
     };
@@ -186,6 +246,9 @@ export default function Hero3D() {
   return (
     <section id="hero" ref={heroRef}>
       <canvas id="hero-canvas" ref={canvasRef}></canvas>
+      <div ref={modelStatusRef} className="model-loading" aria-live="polite">
+        PREPARING 3D MODEL...
+      </div>
       <div className="hero-content">
         <div className="hero-eyebrow">
           MOEKOCH.XYZ — Computer Science Portfolio Site{/*<span>_</span> */}
@@ -213,27 +276,27 @@ export default function Hero3D() {
       <div className="drag-hint">DRAG TO EXPLORE ↗</div>
       <p className="model-credit">
         <a
-          href="https://sketchfab.com/3d-models/lego-flower-bouquet-362b74b395ff411faa6a0d87d198300e"
+          href="https://sketchfab.com/3d-models/garden-whim-flowers-62daa9fea5d2446dadaa4789959d5410"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Lego Flower Bouquet
+          Garden Whim - flowers
         </a>{" "}
         by{" "}
         <a
-          href="https://sketchfab.com/georgiseizov"
+          href="https://sketchfab.com/CMBC"
           target="_blank"
           rel="noopener noreferrer"
         >
-          georgiseizov
+          Brian Trepanier
         </a>{" "}
         is licensed under{" "}
         <a
-          href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+          href="http://creativecommons.org/licenses/by/4.0/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          CC Attribution-NonCommercial-ShareAlike
+          Creative Commons Attribution
         </a>
       </p>
     </section>
