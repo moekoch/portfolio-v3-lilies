@@ -116,7 +116,7 @@ export default function Hero3D() {
         const fittedMax = Math.max(fittedSize.x, fittedSize.y, fittedSize.z) || 1;
 
         controls.target.copy(fittedCenter);
-        camera.position.set(fittedCenter.x, fittedCenter.y + fittedMax * 0.3, fittedCenter.z + fittedMax * 1.4); //larger fitted max = farther camera
+        camera.position.set(fittedCenter.x, fittedCenter.y + fittedMax * 0.3, fittedCenter.z + fittedMax * 1.15);
         camera.lookAt(fittedCenter);
         controls.update();
       },
@@ -135,7 +135,8 @@ export default function Hero3D() {
       const w = hero.offsetWidth;
       const h = hero.offsetHeight || 600;
       camera.aspect = w / h;
-      camera.setViewOffset(w, h, 0, 0, w, h);
+      const horizontalOffset = -Math.min(w * 0.1, 140);
+      camera.setViewOffset(w, h, horizontalOffset, 0, w, h);
       camera.updateProjectionMatrix();
       renderer.setSize(w, h, false);
     }
