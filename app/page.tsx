@@ -329,14 +329,14 @@ export default function Page() {
                   >
                    Odysseus
                   </a>{" "} 
-                  (PewDiePie's AI workspace) and self-hosting, learning about cybersecurity, and teaching myself Blender and TouchDesigner. 
+                  (PewDiePie's AI workspace) and self-hosting and teaching myself Blender and TouchDesigner. 
                   I&apos;ve been especially interested in 3D animation and making things that move and respond.
                 </p>
                 <p>
                   I lead workshops as VP of ACM, compete on the Behrend eSports Marvel Rivals team (main strategist!), and set up VAR Lab outreach events
                   for local K-12 students to learn about tech.
                 </p>
-                <p>Looking for 2027 entry-level roles in software engineering, cybersecurity, or product-adjacent engineering tracks.</p>
+                <p>Looking for 2027 entry-level roles in software engineering or product-adjacent engineering tracks.</p>
               </div>
               <span className="sb-lbl">EDUCATION</span>
               <ul className="sb-list">
@@ -366,7 +366,7 @@ export default function Page() {
           <div className="sec-label">GET IN TOUCH</div>
           <h2 className="sec-title">Let&apos;s work together.</h2>
           <p style={{ opacity: 0.58, fontSize: ".93rem", maxWidth: 460, lineHeight: 1.72 }}>
-            Open to 2027 full-time roles in software engineering, cybersecurity, and product management. Feel free to reach out!
+            Open to 2027 full-time roles in software engineering and product/project management. Feel free to reach out!
           </p>
           <div className="contact-links">
             <a href="mailto:ekoch.morgan@gmail.com" className="clink">

@@ -83,9 +83,9 @@ export default function Hero3D() {
     back.position.set(0, 5, -8);
     scene.add(back);
 
-    // Load the Sketchfab "Lilies" model from /public/models/lilies.glb.
+    // Load the Sketchfab model from /public/models/[...].glb.
     new GLTFLoader().load(
-      "/models/lilies.glb",
+      "/models/lego_flower_bouquet.glb",
       (gltf) => {
         const model = gltf.scene;
         const box = new THREE.Box3().setFromObject(model);
@@ -196,7 +196,7 @@ export default function Hero3D() {
           KOCH
         </h1>
         <p className="hero-sub">
-          Computer Science + MIS at Penn State Behrend. <br />Looking for software engineering, cybersecurity, or IT product management positions for post-grad May 2027. I enjoy building web apps, exploring 3D graphics, and learning new frameworks!
+          Computer Science + MIS at Penn State Behrend. <br />Looking for software engineering or IT product management positions for post-grad May 2027. I enjoy building web apps, exploring 3D graphics, and learning new frameworks!
         </p>
         <div className="hero-ctas">
           <a href="#work" className="btn-p">
@@ -212,19 +212,29 @@ export default function Hero3D() {
       </div>
       <div className="drag-hint">DRAG TO EXPLORE ↗</div>
       <p className="model-credit">
-        "Lilies" by{" "}
-        <a href="https://sketchfab.com/sligocreatures" target="_blank" rel="noopener nofollow">
-          sligocreatures
-        </a>
-        , via{" "}
         <a
-          href="https://sketchfab.com/3d-models/lilies-45755df496804cb7a36f6f32305b57a7"
+          href="https://sketchfab.com/3d-models/lego-flower-bouquet-362b74b395ff411faa6a0d87d198300e"
           target="_blank"
-          rel="noopener nofollow"
+          rel="noopener noreferrer"
         >
-          Sketchfab
+          Lego Flower Bouquet
         </a>{" "}
-        (CC BY 4.0)
+        by{" "}
+        <a
+          href="https://sketchfab.com/georgiseizov"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          georgiseizov
+        </a>{" "}
+        is licensed under{" "}
+        <a
+          href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          CC Attribution-NonCommercial-ShareAlike
+        </a>
       </p>
     </section>
   );
