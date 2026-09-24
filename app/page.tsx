@@ -293,7 +293,9 @@ export default function Page() {
         </div>
       </section>
 
+
       {/* LAB */}
+      {/* 
       <section id="lab">
         <div className="inner">
           <div className="sec-label">EXPERIMENTS</div>
@@ -346,7 +348,6 @@ export default function Page() {
               </div>
             </Reveal>
           </div>
-          */}
 
           <div className="lab-under-construction" role="status" aria-live="polite">
             <div className="lab-icon" aria-hidden="true">
@@ -360,6 +361,7 @@ export default function Page() {
           </div>
         </div>
       </section>
+      */}
 
       {/* CONTACT */}
       <section id="contact">
