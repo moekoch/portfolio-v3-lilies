@@ -246,12 +246,12 @@ export default function Page() {
             <div>
               <div className="about-text">
                 <p>
-                  I&apos;m a CS student at Penn State Behrend finishing up in May 2027, with a minor in MIS. Right now I&apos;m
+                  I&apos;m a CS student at Penn State Behrend finishing up in May 2027, with minors in MIS and Biology. Right now I&apos;m
                   a manager at PSU's Virtual / Augmented Reality Lab: leading a team, shipping a clinical iOS app, and actively learning 
                   about Unreal Engine + 3D Vista Tour Pro for a new Plastics Processing project.
                 </p>
                 <p>
-                  When I&apos;m not doing school or work, I&apos;m usually trying to learn something new. Lately I&apos;ve 
+                  When I&apos;m not doing school or work, sometimes I&apos;m trying to learn something new. Lately I&apos;ve 
                   been playing around with{" "}
                   <a
                   href="https://odysseus-dev.github.io/odysseus/"
@@ -369,7 +369,7 @@ export default function Page() {
           <div className="sec-label">GET IN TOUCH</div>
           <h2 className="sec-title">Let&apos;s work together.</h2>
           <p style={{ opacity: 0.58, fontSize: ".93rem", maxWidth: 460, lineHeight: 1.72 }}>
-            Open to 2027 full-time roles in software engineering and product/project management. Feel free to reach out!
+            Open to 2027 full-time roles in software engineering and IT product/project management. Feel free to reach out!
           </p>
           <div className="contact-links">
             <a href="mailto:ekoch.morgan@gmail.com" className="clink">
