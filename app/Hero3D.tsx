@@ -121,8 +121,8 @@ export default function Hero3D() {
     scene.add(gnd);
 
     function resize() {
-      const w = hero.offsetWidth;
-      const h = hero.offsetHeight || 600;
+      const w = hero!.offsetWidth;
+      const h = hero!.offsetHeight || 600;
 
       camera.aspect = w / h;
 
